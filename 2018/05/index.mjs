@@ -30,7 +30,11 @@ const getReactionChains = inputData => {
     }, {});
   });
 }
+
+// part 1
 console.log(calculateReactions(inputData));
+
+// part 2
 const inputs = getReactionChains(inputData);
 Object.keys(inputs).forEach(key => {
   console.log(key, calculateReactions(inputs[key]));
