@@ -125,5 +125,20 @@ const calculateGuardDuty = data => {
     }, {});
   }, {});
 };
+let topMinute = 0;
+let topMinuteCount = 0;
+let guardId = 0;
+let guardDuty = calculateGuardDuty(readData(inputData));
 console.log(createGrid(readData(inputData)));
-console.log(calculateGuardDuty(readData(inputData)));
+Object.keys(guardDuty).forEach(key => {
+  let minutes = guardDuty[key].countAsleepMinutes;
+  Object.keys(minutes).forEach(minKey => {
+    if (minutes[minKey] > topMinuteCount) {
+      topMinute = minKey;
+      guardId = key;
+      topMinuteCount = minutes[minKey];
+    }
+  });
+});
+
+console.log(guardId, topMinute, topMinuteCount);
